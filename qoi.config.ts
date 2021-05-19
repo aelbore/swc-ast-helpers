@@ -1,13 +1,11 @@
+import * as pkg from './package.json'
 import { promises } from 'fs'
-import { createRequire } from 'module'
-
-const pkg = createRequire(import.meta.url)('./package.json')
 
 export default {
   plugins: [
     {
       name: 'clean',
-      buildStart: async () => {        
+      buildStart: async () => {               
         const pkgJson = { ...pkg }
         delete pkgJson.devDependencies
         delete pkgJson.scripts

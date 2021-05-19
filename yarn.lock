@@ -104,10 +104,10 @@
     "@napi-rs/triples" "^1.0.2"
     tslib "^2.1.0"
 
-"@qoi/build@0.0.1", "@qoi/build@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@qoi/build/-/build-0.0.1.tgz#532a363df2723d84f2333ea448abf9cdd61a8818"
-  integrity sha512-Tti4Oo2YgHF4bmaw8PLpM2Aa/+cA6MOYosX++A79wX+jUsutKUwNRVT2WpyeStrufGEbEnTAW1oxByy5aYsAGg==
+"@qoi/build@0.0.2", "@qoi/build@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@qoi/build/-/build-0.0.2.tgz#1c71d623c44fe99f24c74aa6bfb4dfab9d700b7b"
+  integrity sha512-VGKEAPEvEBAAc/37cJWEhCBHNgOWsDyG5c/sUHBpmdj4gW8FtJ9kubwxXge2zbU3zK2gM5qTdU161EbVba5lng==
   dependencies:
     "@rollup/plugin-commonjs" "^19.0.0"
     "@rollup/plugin-node-resolve" "^13.0.0"
@@ -116,19 +116,19 @@
     rollup-plugin-dts "^3.0.1"
     rollup-plugin-ts-paths-resolve "^1.4.0"
 
-"@qoi/cli@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@qoi/cli/-/cli-0.0.1.tgz#7386818128e67584d67a49455ee324b3a71c8778"
-  integrity sha512-6RB8UzNpw0E5/6rFHzMgz0VTwEBNt8jpMzRgZGIUGEdLtCMA3PApcx7CZdgWCy9lwuE858+0cjnmFLtRxD7EIg==
+"@qoi/cli@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@qoi/cli/-/cli-0.0.2.tgz#342727566c92aa99b576a2db36ace3643098cc1a"
+  integrity sha512-qbETz3OgFq5xsBF9xu51qWC6sZyIYyB2jcHDETP0pLI0XmxGqXO//vvrwBsINqijdiy1hzH84WdDOBNrVSWTkw==
   dependencies:
-    "@qoi/build" "0.0.1"
-    "@swc/core" "^1.2.57"
+    "@qoi/build" "0.0.2"
+    "@qoi/register" "0.0.2"
     cac "^6.7.3"
 
-"@qoi/register@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@qoi/register/-/register-0.0.1.tgz#179d67d3cd4b9f891d8e6e871881abdbd7359dca"
-  integrity sha512-Fga5QqqHNE/CFI2DhiHIJiDPZjJcDuXBWf+UlcX/vCQi2Zd+ArRh1kasp5BYbpZwlJW/f7bUIoqOLSz805xQnw==
+"@qoi/register@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@qoi/register/-/register-0.0.2.tgz#cb0d5f7ed4f42c84b6b059703920e10061181a0a"
+  integrity sha512-n4IlkKg8jmqWUg1asWw9D1HkRqRYQokLhWyq9Du09bfIPBIWRWroQKYfwGOOLtZDo8xG+123Tw7FhKhgbvvCag==
   dependencies:
     "@swc/core" "^1.2.57"
     pirates "^4.0.1"
