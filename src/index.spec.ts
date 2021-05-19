@@ -1,7 +1,7 @@
 import * as sinon from 'sinon'
 import Visitor from '@swc/core/Visitor'
 
-import type { Plugin, Program, ClassDeclaration, ImportDeclaration, ExpressionStatement } from '@swc/core'
+import type { Plugin, Program, AwaitExpression, ClassDeclaration, ImportDeclaration, ExpressionStatement } from '@swc/core'
 import { transformSync, plugins } from '@swc/core'
 
 import { expect } from 'aria-mocha'
@@ -40,6 +40,10 @@ describe('index', () => {
 
       static get styles() {
         return ${css}
+      }
+
+      render() {
+        await import('@qoi/build')
       }
 
     }
@@ -106,6 +110,12 @@ describe('index', () => {
             }
           }
         }
+        return e
+      }
+
+      visitAwaitExpression(e: AwaitExpression) {
+        console.log(e)
+
         return e
       }
 
