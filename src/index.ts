@@ -45,6 +45,7 @@ const TYPES = Object.freeze({
   TsTypeReference: 'TsTypeReference'
 })
 
+export * from './create'
 
 export function isImportDeclaration(node: Node): node is ImportDeclaration {
   return node.type === TYPES.ImportDeclaration
