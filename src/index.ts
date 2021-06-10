@@ -1,26 +1,4 @@
-import type {
-  Node,
-  ImportDeclaration, 
-  ClassDeclaration,
-  CallExpression,
-  Decorator,
-  StringLiteral,
-  ClassMethod,
-  Identifier,
-  ImportSpecifier,
-  MemberExpression,
-  ExpressionStatement,
-  ReturnStatement,
-  TaggedTemplateExpression,
-  TemplateLiteral,
-  BlockStatement,
-  TemplateElement,
-  ClassProperty,
-  ObjectExpression,
-  KeyValueProperty,
-  TsTypeAnnotation,
-  TsTypeReference
-} from '@swc/core'
+import * as swc from '@swc/core'
 
 const TYPES = Object.freeze({
   CallExpression: 'CallExpression',
@@ -47,82 +25,82 @@ const TYPES = Object.freeze({
 
 export * from './create'
 
-export function isImportDeclaration(node: Node): node is ImportDeclaration {
+export function isImportDeclaration(node: swc.Node): node is swc.ImportDeclaration {
   return node.type === TYPES.ImportDeclaration
 }
 
-export function isClasDeclaration(node: Node): node is ClassDeclaration {
+export function isClasDeclaration(node: swc.Node): node is swc.ClassDeclaration {
   return node.type === TYPES.ClassDeclaration
 }
 
-export function isDecorator(node: Node): node is Decorator {
+export function isDecorator(node: swc.Node): node is swc.Decorator {
   return node.type === TYPES.Decorator
 }
 
-export function isCallExpression(node: Node): node is CallExpression {
+export function isCallExpression(node: swc.Node): node is swc.CallExpression {
   return node.type === TYPES.CallExpression
 }
 
-export function isStringLiteral(node: Node): node is StringLiteral {
+export function isStringLiteral(node: swc.Node): node is swc.StringLiteral {
   return node.type === TYPES.StringLiteral
 }
 
-export function isClassMethod(node: Node): node is ClassMethod {
+export function isClassMethod(node: swc.Node): node is swc.ClassMethod {
   return node.type === TYPES.ClassMethod
 }
 
-export function isIdentifer(node: Node): node is Identifier {
+export function isIdentifer(node: swc.Node): node is swc.Identifier {
   return node.type === TYPES.Identifier
 }
 
-export function isImportSpecifier(node: Node): node is ImportSpecifier {
+export function isImportSpecifier(node: swc.Node): node is swc.ImportSpecifier {
   return node.type === TYPES.ImportSpecifier
 }
 
-export function isMemberExpression(node: Node): node is MemberExpression {
+export function isMemberExpression(node: swc.Node): node is swc.MemberExpression {
   return node.type === TYPES.MemberExpression
 }
 
-export function isExpressionStatement(node: Node): node is ExpressionStatement {
+export function isExpressionStatement(node: swc.Node): node is swc.ExpressionStatement {
   return node.type === TYPES.ExpressionStatement
 }
 
-export function isReturnStatement(node: Node): node is ReturnStatement {
+export function isReturnStatement(node: swc.Node): node is swc.ReturnStatement {
   return node.type === TYPES.ReturnStatement
 }
 
-export function isTaggedTemplateExpression(node: Node): node is TaggedTemplateExpression {
+export function isTaggedTemplateExpression(node: swc.Node): node is swc.TaggedTemplateExpression {
   return node.type === TYPES.TaggedTemplateExpression
 }
 
-export function isTemplateLiteral(node: Node): node is TemplateLiteral {
+export function isTemplateLiteral(node: swc.Node): node is swc.TemplateLiteral {
   return node.type === TYPES.TemplateLiteral
 }
 
-export function isTemplateElement(node: Node): node is TemplateElement {
+export function isTemplateElement(node: swc.Node): node is swc.TemplateElement {
   return node.type === TYPES.TemplateElement
 } 
 
-export function isBlockStatement(node: Node): node is BlockStatement {
+export function isBlockStatement(node: swc.Node): node is swc.BlockStatement {
   return node.type === TYPES.BlockStatement
 }
 
-export function isClassProperty(node: Node): node is ClassProperty {
+export function isClassProperty(node: swc.Node): node is swc.ClassProperty {
   return node.type === TYPES.ClassProperty
 }
 
-export function isObjectExpression(node: Node): node is ObjectExpression {
+export function isObjectExpression(node: swc.Node): node is swc.ObjectExpression {
   return node.type === TYPES.ObjectExpression
 }
 
-export function isKeyValueProperty(node: Node): node is KeyValueProperty {
+export function isKeyValueProperty(node: swc.Node): node is swc.KeyValueProperty {
   return node.type === TYPES.KeyValueProperty
 }
 
-export function isTsTypeAnnotation(node: Node): node is TsTypeAnnotation {
+export function isTsTypeAnnotation(node: swc.Node): node is swc.TsTypeAnnotation {
   return node.type === TYPES.TsTypeAnnotation
 }
 
-export function isTsTypeReference(node: Node): node is TsTypeReference {
+export function isTsTypeReference(node: swc.Node): node is swc.TsTypeReference {
   return node.type === TYPES.TsTypeReference
 }
