@@ -20,10 +20,15 @@ const TYPES = Object.freeze({
   ObjectExpression: 'ObjectExpression',
   KeyValueProperty: 'KeyValueProperty',
   TsTypeAnnotation: 'TsTypeAnnotation',
-  TsTypeReference: 'TsTypeReference'
+  TsTypeReference: 'TsTypeReference',
+  ExportDeclaration: 'ExportDeclaration'
 })
 
 export * from './create'
+
+export function isExportDeclaration(node: swc.Node): node is swc.ExportDeclaration {
+  return node.type === TYPES.ExportDeclaration
+}
 
 export function isImportDeclaration(node: swc.Node): node is swc.ImportDeclaration {
   return node.type === TYPES.ImportDeclaration

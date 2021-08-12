@@ -4,7 +4,7 @@ import Visitor from '@swc/core/Visitor'
 import type { Plugin, Program, AwaitExpression, ClassDeclaration, ImportDeclaration, ExpressionStatement } from '@swc/core'
 import { transformSync, plugins } from '@swc/core'
 
-import { expect } from 'aria-mocha'
+import { expect } from '@qoi/test'
 
 import * as index from './index'
 
