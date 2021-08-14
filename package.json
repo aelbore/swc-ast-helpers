@@ -1,6 +1,6 @@
 {
   "name": "swc-ast-helpers",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "SWC AST Helpers",
   "scripts": {
     "build": "qoi build --dts --emptyOutDir",
