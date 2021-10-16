@@ -28,7 +28,11 @@ export function createStringLiteral(value: string) {
   return object
 }
 
-export function createMemberExpression(object: swc.Identifier, property: swc.Identifier) {
+export function createMemberExpression(
+  object: swc.Identifier 
+    | swc.ThisExpression 
+    | swc.MemberExpression, 
+  property: swc.Identifier) {
   const result: swc.MemberExpression = {
     type: 'MemberExpression',
     span: createSpan(),
@@ -136,4 +140,47 @@ export function updateImportDeclaration(node: swc.ImportDeclaration,
     hasEscape: false
   }
   return imports as swc.ImportDeclaration
+}
+
+export function createThisExpression() {
+  const expression: swc.ThisExpression = {
+    type: 'ThisExpression',
+    span: createSpan()
+  }
+  return expression
+}
+
+export function createGetter(key: swc.Identifier, 
+  body: swc.BlockStatement, 
+  decorators: swc.Decorator[] = []
+) {
+  const expression: swc.ClassMethod = {
+    type: 'ClassMethod',
+    span: createSpan(),
+    key,
+    function: createFunction(body, [], decorators),
+    kind: 'getter',
+    is_static: false,
+    is_abstract: false,
+    is_optional: false,
+    accessibility: null
+  }
+  return expression
+}
+
+export function createFunction(body: swc.BlockStatement, 
+  params: swc.Param[] = [], 
+  decorators: swc.Decorator[] = []
+) {
+  const expression: swc.Fn = {
+    params,
+    decorators,
+    span: createSpan(),
+    body,
+    generator: false,
+    async: false,
+    typeParameters: null,
+    returnType: null
+  }
+  return expression
 }

@@ -1,6 +1,6 @@
 {
   "name": "swc-ast-helpers",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "SWC AST Helpers",
   "scripts": {
     "build": "qoi build --dts --emptyOutDir",
@@ -21,14 +21,14 @@
   },
   "homepage": "https://github.com/aelbore/swc-ast-helpers#readme",
   "devDependencies": {
-    "@qoi/build": "^0.0.9",
-    "@qoi/cli": "^0.0.10",
+    "@qoi/build": "^0.0.15",
+    "@qoi/cli": "^0.0.17",
     "@qoi/fs": "0.0.8",
-    "@qoi/test": "^0.0.8",
+    "@qoi/test": "^0.0.11",
     "@types/mocha": "^9.0.0",
-    "@types/node": "^16.4.13",
-    "@types/sinon": "^10.0.2",
+    "@types/node": "^16.11.0",
+    "@types/sinon": "^10.0.4",
     "sinon": "^11.1.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.4"
   }
 }
