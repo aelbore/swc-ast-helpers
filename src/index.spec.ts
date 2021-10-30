@@ -42,7 +42,7 @@ describe('index', () => {
         return ${css}
       }
 
-      render() {
+      async render() {
         await import('@qoi/build')
       }
 
