@@ -2,6 +2,7 @@
   "name": "swc-ast-helpers",
   "version": "0.0.5",
   "description": "SWC AST Helpers",
+  "type": "module",
   "scripts": {
     "build": "qoi build --dts --emptyOutDir",
     "test": "qoi test --check-coverage"
