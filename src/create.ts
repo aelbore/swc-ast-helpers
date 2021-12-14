@@ -82,6 +82,15 @@ export function createImportDefaultSpecifier(identifer: string | swc.Identifier)
   return specifier
 }
 
+export function createImportSpecifier(identifer: string | swc.Identifier) {
+  const specifier = {
+    type: 'ImportSpecifier',
+    span: createSpan(),
+    local: getKey(identifer)
+  } as swc.ImportSpecifier
+  return specifier
+}
+
 export function createArrayExpression(elements: swc.ExprOrSpread[]) {
   const expression: swc.ArrayExpression =       {
     type: 'ArrayExpression',
@@ -183,4 +192,36 @@ export function createFunction(body: swc.BlockStatement,
     returnType: null
   }
   return expression
+}
+
+export function createTemplateElement(value: string) {
+  const literal = createStringLiteral(value)
+  const template = {
+    type: 'TemplateElement',
+    span: createSpan(),
+    tail: true,
+    cooked: literal,
+    raw: literal
+  } as swc.TemplateElement
+  return template
+}
+
+export function createTemplateLiteral(quasis: swc.TemplateElement[], expressions: swc.Expression[] = []) {
+  const template = {
+    type: 'TemplateLiteral',
+    span: createSpan(),
+    expressions,
+    quasis
+  } as swc.TemplateLiteral
+  return template
+}
+
+export function createTaggedTemplateExpression(tag: swc.Identifier, template: swc.TemplateLiteral) {
+  const result = {
+    type: 'TaggedTemplateExpression',
+    span: createSpan(),
+    tag,
+    template
+  } as swc.TaggedTemplateExpression
+  return result
 }
