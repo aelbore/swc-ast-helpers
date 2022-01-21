@@ -43,7 +43,7 @@ export function createMemberExpression(
   return result
 }
 
-export function createCallExpression(callee: swc.MemberExpression, args: swc.Argument[] = []) {
+export function createCallExpression(callee: swc.MemberExpression | swc.Identifier, args: swc.Argument[] = []) {
   const object: swc.CallExpression = {
     type: 'CallExpression',
     span: createSpan(),
