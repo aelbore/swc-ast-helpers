@@ -37,13 +37,12 @@ export function createMemberExpression(
     type: 'MemberExpression',
     span: createSpan(),
     object,
-    property,
-    computed: false
+    property
   }
   return result
 }
 
-export function createCallExpression(callee: swc.MemberExpression, args: swc.Argument[] = []) {
+export function createCallExpression(callee: swc.MemberExpression | swc.Identifier, args: swc.Argument[] = []) {
   const object: swc.CallExpression = {
     type: 'CallExpression',
     span: createSpan(),
@@ -223,5 +222,14 @@ export function createTaggedTemplateExpression(tag: swc.Identifier, template: sw
     tag,
     template
   } as swc.TaggedTemplateExpression
+  return result
+}
+
+export function createDecorator(expression: swc.CallExpression) {
+  const result: swc.Decorator = {
+    type: 'Decorator',
+    span: createSpan(),
+    expression
+  }
   return result
 }
