@@ -23,7 +23,7 @@ export function createStringLiteral(value: string) {
     type: 'StringLiteral',
     span: createSpan(),
     value,
-    has_escape: false
+    hasEscape: false
   }
   return object
 }
