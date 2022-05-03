@@ -61,7 +61,7 @@ export function createExpressionStatement(expression: swc.Expression) {
   return statement
 }
 
-export function createAssingmentExpression(left: swc.Expression, right: swc.Expression) {
+export function createAssignmentExpression(left: swc.Expression, right: swc.Expression) {
   const expression: swc.AssignmentExpression = {
     type: 'AssignmentExpression',
     span: createSpan(),
@@ -91,7 +91,7 @@ export function createImportSpecifier(identifer: string | swc.Identifier) {
 }
 
 export function createArrayExpression(elements: swc.ExprOrSpread[]) {
-  const expression: swc.ArrayExpression =       {
+  const expression: swc.ArrayExpression = {
     type: 'ArrayExpression',
     span: createSpan(),
     elements
@@ -193,8 +193,8 @@ export function createFunction(body: swc.BlockStatement,
   return expression
 }
 
-export function createTemplateElement(value: string) {
-  const literal = createStringLiteral(value)
+export function createTemplateElement(value: string, isNewSyntax: boolean = false) {
+  const literal = isNewSyntax ? value: createStringLiteral(value)
   const template = {
     type: 'TemplateElement',
     span: createSpan(),
@@ -232,4 +232,24 @@ export function createDecorator(expression: swc.CallExpression) {
     expression
   }
   return result
+}
+
+export interface ClassPropertyOptions {
+  isStatic?: boolean
+  typeAnnotation?: swc.TsTypeAnnotation
+  isAbstract?: boolean
+  isOptional?: boolean
+  isOverride?: false
+  readonly?: false
+}
+
+export function createClassProperty(key: string | swc.Identifier, value: swc.Expression, options?: ClassPropertyOptions) {
+  const property = {
+    type: 'ClassProperty',
+    span: createSpan(),
+    key: getKey(key),
+    value,
+    ...(options || {})
+  } as swc.ClassProperty & ClassPropertyOptions
+  return property 
 }

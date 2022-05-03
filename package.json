@@ -1,6 +1,6 @@
 {
   "name": "swc-ast-helpers",
-  "version": "0.0.8-beta.2",
+  "version": "0.0.8-beta.3",
   "description": "SWC AST Helpers",
   "type": "module",
   "scripts": {
