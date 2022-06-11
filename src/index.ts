@@ -1,6 +1,6 @@
 import * as swc from '@swc/core'
 
-const TYPES = Object.freeze({
+export const TYPES = Object.freeze({
   CallExpression: 'CallExpression',
   ClassDeclaration: 'ClassDeclaration',
   Decorator: 'Decorator',
@@ -21,7 +21,10 @@ const TYPES = Object.freeze({
   KeyValueProperty: 'KeyValueProperty',
   TsTypeAnnotation: 'TsTypeAnnotation',
   TsTypeReference: 'TsTypeReference',
-  ExportDeclaration: 'ExportDeclaration'
+  ExportDeclaration: 'ExportDeclaration',
+  ImportDefaultSpecifier: 'ImportDefaultSpecifier',
+  AssignmentExpression: 'AssignmentExpression',
+  ArrayExpression: 'ArrayExpression'
 })
 
 export * from './create'
@@ -60,6 +63,10 @@ export function isIdentifer(node: swc.Node): node is swc.Identifier {
 
 export function isImportSpecifier(node: swc.Node): node is swc.ImportSpecifier {
   return node?.type === TYPES.ImportSpecifier
+}
+
+export function isImportDefaultSpecifier(node: swc.Node): node is swc.ImportDefaultSpecifier {
+  return node?.type == TYPES.ImportDefaultSpecifier
 }
 
 export function isMemberExpression(node: swc.Node): node is swc.MemberExpression {
@@ -108,4 +115,12 @@ export function isTsTypeAnnotation(node: swc.Node): node is swc.TsTypeAnnotation
 
 export function isTsTypeReference(node: swc.Node): node is swc.TsTypeReference {
   return node?.type === TYPES.TsTypeReference
+}
+
+export function isAssignmentExpression(node: swc.Node): node is swc.AssignmentExpression {
+  return node?.type === TYPES.AssignmentExpression
+}
+
+export function isArrayExpression(node: swc.Node): node is swc.ArrayExpression {
+  return node?.type === TYPES.ArrayExpression
 }

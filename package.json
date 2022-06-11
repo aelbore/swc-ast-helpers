@@ -1,11 +1,10 @@
 {
   "name": "swc-ast-helpers",
-  "version": "0.0.8-beta.2",
+  "version": "0.0.8",
   "description": "SWC AST Helpers",
   "type": "module",
   "scripts": {
-    "build": "qoi build -f es,cjs --dts --emptyOutDir",
-    "test": "qoi test --check-coverage"
+    "build": "qoi build -f es,cjs --dts --emptyOutDir"
   },
   "repository": {
     "type": "git",
@@ -21,15 +20,15 @@
     "url": "https://github.com/aelbore/swc-ast-helpers/issues"
   },
   "homepage": "https://github.com/aelbore/swc-ast-helpers#readme",
+  "peerDependencies": {
+    "@swc/core": "^1.2.198"
+  },
   "devDependencies": {
-    "@qoi/build": "^0.1.0-beta.1",
-    "@qoi/cli": "^0.1.0-beta.1",
-    "@qoi/fs": "0.0.9",
-    "@qoi/test": "^0.0.11",
-    "@types/mocha": "^9.1.1",
-    "@types/node": "^17.0.31",
-    "@types/sinon": "^10.0.11",
-    "sinon": "^13.0.2",
-    "typescript": "^4.6.4"
+    "@qoi/build": "^0.1.0-beta.7",
+    "@qoi/cli": "^0.1.0-beta.7",
+    "@rollup/pluginutils": "^4.2.1",
+    "@types/node": "^17.0.42",
+    "rollup-plugin-dts": "^4.2.2",
+    "typescript": "^4.7.3"
   }
 }
