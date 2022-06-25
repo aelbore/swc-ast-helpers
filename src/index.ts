@@ -22,12 +22,32 @@ export const TYPES = Object.freeze({
   TsTypeAnnotation: 'TsTypeAnnotation',
   TsTypeReference: 'TsTypeReference',
   ExportDeclaration: 'ExportDeclaration',
+  ExportDefaultDeclaration: 'ExportDefaultDeclaration',
+  ExportDefaultExpression: 'ExportDefaultExpression',
   ImportDefaultSpecifier: 'ImportDefaultSpecifier',
   AssignmentExpression: 'AssignmentExpression',
-  ArrayExpression: 'ArrayExpression'
+  ArrayExpression: 'ArrayExpression',
+  VariableDeclaration: 'VariableDeclaration',
+  VariableDeclarator: 'VariableDeclarator'
 })
 
 export * from './create'
+
+export function isExportDefaultDeclaration(node: swc.Node): node is swc.ExportDefaultDeclaration {
+  return node?.type === TYPES.ExportDefaultDeclaration
+}
+
+export function isVariableDeclarator(node: swc.Node): node is swc.VariableDeclarator {
+  return node?.type === TYPES.VariableDeclarator
+}
+
+export function isVariableDeclaration(node: swc.Node): node is swc.VariableDeclaration {
+  return node?.type === TYPES.VariableDeclaration
+}
+
+export function isExportDefaultExpression(node: swc.Node): node is swc.ExportDefaultExpression {
+  return node?.type === TYPES.ExportDefaultExpression
+}
 
 export function isExportDeclaration(node: swc.Node): node is swc.ExportDeclaration {
   return node?.type === TYPES.ExportDeclaration

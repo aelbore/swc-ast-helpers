@@ -4,6 +4,10 @@ function getKey(identifer: string | swc.Identifier) {
   return (typeof identifer == 'string') ? createIdentifer(identifer): identifer
 }
 
+function createStringLiteralValue(value: string | swc.StringLiteral) {
+  return (typeof value == 'string') ? createStringLiteral(value): value
+}
+
 export function createSpan(span: swc.Span = { start: 0, end: 0, ctxt: 0 }) {
   return span
 }
@@ -88,6 +92,10 @@ export function createImportSpecifier(identifer: string | swc.Identifier) {
     local: getKey(identifer)
   } as swc.ImportSpecifier
   return specifier
+}
+
+export function createNamedImportSpecifier(local: string | swc.Identifier, imported: string | swc.Identifier) {
+  return { ...createImportSpecifier(local), imported: getKey(imported) } as swc.NamedImportSpecifier
 }
 
 export function createArrayExpression(elements: swc.ExprOrSpread[]) {
@@ -252,4 +260,77 @@ export function createClassProperty(key: string | swc.Identifier, value: swc.Exp
     ...(options || {})
   } as swc.ClassProperty & ClassPropertyOptions
   return property 
+}
+
+export function createExportDefaultDeclaration(decl: swc.DefaultDecl) {
+  return {
+    type: 'ExportDefaultDeclaration',
+    decl
+  } as swc.ExportDefaultDeclaration
+}
+
+export function createClassExpression(
+  identifer: string | swc.Identifier,
+  body: swc.ClassMember[],
+  decorators?: swc.Decorator[],
+  superClass?: swc.Expression
+) {
+  return {
+    type: 'ClassExpression',
+    span: createSpan(),
+    identifier: getKey(identifer),
+    body,
+    decorators,
+    superClass
+  } as swc.ClassExpression
+}
+
+export function createExportDefaultClassExpression(  
+  identifer: string | swc.Identifier,
+  body: swc.ClassMember[],
+  decorators?: swc.Decorator[],
+  superClass?: swc.Expression
+) {
+  return createExportDefaultDeclaration(
+    createClassExpression(
+      identifer, 
+      body, 
+      decorators, 
+      superClass
+    ))
+}
+
+export function createExportDefaultExpression(expression: string | swc.Identifier) {
+  return {
+    type: 'ExportDefaultExpression',
+    span: createSpan(),
+    expression: getKey(expression)
+  } as swc.ExportDefaultExpression
+}
+
+export function createVariableDeclarator(id: string | swc.Identifier, definite: boolean, init?: swc.Expression) {
+  return {
+    type: 'VariableDeclarator',
+    span: createSpan(),
+    id: getKey(id)
+  } as swc.VariableDeclarator
+}
+
+export function createVariableDeclaration(kind: swc.VariableDeclarationKind, declare: boolean, declarations: swc.VariableDeclarator[]) {
+  return {
+    type: 'VariableDeclaration',
+    span: createSpan(),
+    kind,
+    declare,
+    declarations
+  } as swc.VariableDeclaration
+}
+
+export function createImportDeclaration(specifiers: swc.ImportSpecifier[], source: string | swc.StringLiteral) {
+  return {
+    type: 'ImportDeclaration',
+    span: createSpan(),
+    specifiers,
+    source: createStringLiteralValue(source)
+  } as swc.ImportDeclaration
 }
