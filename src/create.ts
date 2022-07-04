@@ -27,7 +27,7 @@ export function createStringLiteral(value: string) {
     type: 'StringLiteral',
     span: createSpan(),
     value,
-    raw: value,
+    raw: `'${value}'`,
     hasEscape: false
   } as swc.StringLiteral & { raw?: string }
   return object
