@@ -1,6 +1,6 @@
 {
   "name": "swc-ast-helpers",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SWC AST Helpers",
   "type": "module",
   "scripts": {
@@ -21,13 +21,13 @@
   },
   "homepage": "https://github.com/aelbore/swc-ast-helpers#readme",
   "peerDependencies": {
-    "@swc/core": "^1.2.205"
+    "@swc/core": "^1.2.208"
   },
   "devDependencies": {
-    "@qoi/build": "^0.1.0",
-    "@qoi/cli": "^0.1.0",
+    "@qoi/build": "^0.2.0",
+    "@qoi/cli": "^0.2.0",
     "@rollup/pluginutils": "^4.2.1",
-    "@types/node": "^18.0.0",
+    "@types/node": "^18.0.1",
     "rollup-plugin-dts": "^4.2.2",
     "typescript": "^4.7.4"
   }

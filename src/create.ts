@@ -23,12 +23,13 @@ export function createIdentifer(value: string) {
 }
 
 export function createStringLiteral(value: string) {
-  const object: swc.StringLiteral = {
+  const object = {
     type: 'StringLiteral',
     span: createSpan(),
     value,
+    raw: value,
     hasEscape: false
-  }
+  } as swc.StringLiteral & { raw?: string }
   return object
 }
 
@@ -46,7 +47,7 @@ export function createMemberExpression(
   return result
 }
 
-export function createCallExpression(callee: swc.MemberExpression | swc.Identifier, args: swc.Argument[] = []) {
+export function createCallExpression(callee: swc.Expression | swc.Identifier | swc.Super | swc.Import, args: swc.Argument[] = []) {
   const object: swc.CallExpression = {
     type: 'CallExpression',
     span: createSpan(),
@@ -333,4 +334,31 @@ export function createImportDeclaration(specifiers: swc.ImportSpecifier[], sourc
     specifiers,
     source: createStringLiteralValue(source)
   } as swc.ImportDeclaration
+}
+
+export function createConstructor(body: swc.BlockStatement, params: swc.Param[] = []) {
+  return {
+    type: 'Constructor',
+    span: createSpan(),
+    key: createIdentifer('constructor'),
+    params,
+    body
+  } as swc.Constructor
+}
+
+export function createNullLiteral() {
+  return { type: 'NullLiteral', span: createSpan() } as swc.NullLiteral
+}
+
+export function createSuper(args?: swc.Expression) {
+  return { type: 'Super', span: createSpan() } as swc.Super
+}
+
+export function createOptionalChainingExpression(base: swc.Expression) {
+  return {
+    type: 'OptionalChainingExpression',
+    span: createSpan(),
+    questionDotToken: createSpan(),
+    base,
+  } as swc.OptionalChainingExpression
 }

@@ -28,10 +28,18 @@ export const TYPES = Object.freeze({
   AssignmentExpression: 'AssignmentExpression',
   ArrayExpression: 'ArrayExpression',
   VariableDeclaration: 'VariableDeclaration',
-  VariableDeclarator: 'VariableDeclarator'
+  VariableDeclarator: 'VariableDeclarator',
+  Constructor: 'Constructor',
+  Parameter: 'Parameter',
+  NullLiteral: 'NullLiteral',
+  Super: 'Super'
 })
 
 export * from './create'
+
+export function isSuper(node: swc.Node): node is swc.Super {
+  return node?.type === TYPES.Super
+}
 
 export function isExportDefaultDeclaration(node: swc.Node): node is swc.ExportDefaultDeclaration {
   return node?.type === TYPES.ExportDefaultDeclaration
@@ -143,4 +151,16 @@ export function isAssignmentExpression(node: swc.Node): node is swc.AssignmentEx
 
 export function isArrayExpression(node: swc.Node): node is swc.ArrayExpression {
   return node?.type === TYPES.ArrayExpression
+}
+
+export function isConstructor(node: swc.Node): node is swc.Constructor  {
+  return node?.type === TYPES.Constructor
+}
+
+export function isParameter(node: swc.Node): node is swc.Param {
+  return node?.type === TYPES.Parameter
+}
+
+export function isNullLiteral(node: swc.Node): node is swc.NullLiteral {
+  return node?.type === TYPES.NullLiteral
 }
