@@ -32,10 +32,20 @@ export const TYPES = Object.freeze({
   Constructor: 'Constructor',
   Parameter: 'Parameter',
   NullLiteral: 'NullLiteral',
-  Super: 'Super'
+  Super: 'Super',
+  ParenthesisExpression: 'ParenthesisExpression',
+  ArrowFunctionExpression: 'ArrowFunctionExpression',
 })
 
 export * from './create'
+
+export function isParenthesisExpression(node: swc.Node): node is swc.ParenthesisExpression {
+  return node?.type === TYPES.ParenthesisExpression
+}
+
+export function isArrowFunctionExpression(node: swc.Node): node is swc.ArrowFunctionExpression {
+  return node?.type === TYPES.ArrowFunctionExpression
+}
 
 export function isSuper(node: swc.Node): node is swc.Super {
   return node?.type === TYPES.Super
