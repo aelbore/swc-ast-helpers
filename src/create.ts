@@ -177,10 +177,11 @@ export function createGetter(key: swc.Identifier,
     key,
     function: createFunction(body, [], decorators),
     kind: 'getter',
-    is_static: false,
-    is_abstract: false,
-    is_optional: false,
-    accessibility: null
+    isStatic: false,
+    accessibility: null,
+    isAbstract: false,
+    isOptional: false,
+    isOverride: false
   }
   return expression
 }
