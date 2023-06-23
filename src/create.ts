@@ -34,9 +34,9 @@ export function createStringLiteral(value: string) {
 }
 
 export function createMemberExpression(
-  object: swc.Identifier 
-    | swc.ThisExpression 
-    | swc.MemberExpression, 
+  object: swc.Identifier
+    | swc.ThisExpression
+    | swc.MemberExpression,
   property: swc.Identifier) {
   const result: swc.MemberExpression = {
     type: 'MemberExpression',
@@ -109,7 +109,7 @@ export function createArrayExpression(elements: swc.ExprOrSpread[]) {
 }
 
 export function createKeyValueProperty(identifer: string | swc.Identifier, expression: swc.Expression) {
-  const props: swc.KeyValueProperty = { 
+  const props: swc.KeyValueProperty = {
     type: 'KeyValueProperty',
     key: getKey(identifer),
     value: expression
@@ -144,8 +144,8 @@ export function createBlockStatement(statements: swc.Statement[]) {
   return statement
 }
 
-export function updateImportDeclaration(node: swc.ImportDeclaration, 
-  source: swc.StringLiteral, 
+export function updateImportDeclaration(node: swc.ImportDeclaration,
+  source: swc.StringLiteral,
   specifiers: (swc.ImportSpecifier | swc.ImportDefaultSpecifier)[]
 ) {
   const imports = {
@@ -167,8 +167,8 @@ export function createThisExpression() {
   return expression
 }
 
-export function createGetter(key: swc.Identifier, 
-  body: swc.BlockStatement, 
+export function createGetter(key: swc.Identifier,
+  body: swc.BlockStatement,
   decorators: swc.Decorator[] = []
 ) {
   const expression: swc.ClassMethod = {
@@ -186,8 +186,8 @@ export function createGetter(key: swc.Identifier,
   return expression
 }
 
-export function createFunction(body: swc.BlockStatement, 
-  params: swc.Param[] = [], 
+export function createFunction(body: swc.BlockStatement,
+  params: swc.Param[] = [],
   decorators: swc.Decorator[] = []
 ) {
   const expression: swc.Fn = {
@@ -261,7 +261,7 @@ export function createClassProperty(key: string | swc.Identifier, value: swc.Exp
     value,
     ...(options || {})
   } as swc.ClassProperty & ClassPropertyOptions
-  return property 
+  return property
 }
 
 export function createExportDefaultDeclaration(decl: swc.DefaultDecl) {
@@ -287,7 +287,7 @@ export function createClassExpression(
   } as swc.ClassExpression
 }
 
-export function createExportDefaultClassExpression(  
+export function createExportDefaultClassExpression(
   identifer: string | swc.Identifier,
   body: swc.ClassMember[],
   decorators?: swc.Decorator[],
@@ -295,9 +295,9 @@ export function createExportDefaultClassExpression(
 ) {
   return createExportDefaultDeclaration(
     createClassExpression(
-      identifer, 
-      body, 
-      decorators, 
+      identifer,
+      body,
+      decorators,
       superClass
     ))
 }
@@ -360,6 +360,7 @@ export function createOptionalChainingExpression(base: swc.Expression) {
     type: 'OptionalChainingExpression',
     span: createSpan(),
     questionDotToken: createSpan(),
+    optional: true,
     base,
   } as swc.OptionalChainingExpression
 }
